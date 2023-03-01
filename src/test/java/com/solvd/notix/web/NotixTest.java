@@ -22,22 +22,26 @@ import java.util.Random;
 public class NotixTest implements IAbstractTest {
 
     @Test
-    public void testGamingLaptopNavigation() {
+    public void testFilterPanelOptions() {
         MainPage mainPage = new MainPage(getDriver());
         mainPage.open();
         NotebookShoppingPage gamingNotebookShoppingPage = mainPage.goToGamingNotebookShoppingPage();
-        gamingNotebookShoppingPage.checkFilterOption(NotebookShoppingPage.FilterOption.BRAND, "asus");
+        gamingNotebookShoppingPage.checkFilterOption(NotebookShoppingPage.FilterOption.BRAND, R.TESTDATA.get("brand"));
         gamingNotebookShoppingPage.openPanelFilterOption(NotebookShoppingPage.FilterPanel.CPU);
-        gamingNotebookShoppingPage.checkFilterOption(NotebookShoppingPage.FilterOption.CPU, "Intel Core i7");
+        gamingNotebookShoppingPage.checkFilterOption(NotebookShoppingPage.FilterOption.CPU, R.TESTDATA.get("cpu"));
         gamingNotebookShoppingPage.openPanelFilterOption(NotebookShoppingPage.FilterPanel.RESOLUTION);
-        gamingNotebookShoppingPage.checkFilterOption(NotebookShoppingPage.FilterOption.RESOLUTION, "1920 x 1080");
+        gamingNotebookShoppingPage.checkFilterOption(NotebookShoppingPage.FilterOption.RESOLUTION, R.TESTDATA.get("resolution"));
 
 
         NotebookDescriptionPage descriptionPage = gamingNotebookShoppingPage.clickOnProductById(1);
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertTrue(descriptionPage.getDescriptionItem(NotebookDescriptionPage.DescriptionCommonField.CPU_MODEL).contains("Intel Core i7"));
-        softAssert.assertTrue(descriptionPage.getDescriptionItem(NotebookDescriptionPage.DescriptionCommonField.RESOLUTION).contains("1920 x 1080"));
-        softAssert.assertTrue(descriptionPage.getDescriptionItem(NotebookDescriptionPage.DescriptionCommonField.PRODUCT_LINE).contains("asus".toUpperCase()));
+        softAssert.assertTrue(descriptionPage.getDescriptionItem(NotebookDescriptionPage.DescriptionCommonField.CPU_MODEL)
+                .contains(R.TESTDATA.get("cpu")));
+        softAssert.assertTrue(descriptionPage.getDescriptionItem(NotebookDescriptionPage.DescriptionCommonField.RESOLUTION)
+                .contains(R.TESTDATA.get("resolution")));
+        softAssert.assertTrue(descriptionPage.getDescriptionItem(NotebookDescriptionPage.DescriptionCommonField.PRODUCT_LINE)
+                .contains(R.TESTDATA.get("brand").toUpperCase()));
+        softAssert.assertAll();
     }
 
     @Test
