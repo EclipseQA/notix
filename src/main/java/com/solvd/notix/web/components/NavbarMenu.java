@@ -5,9 +5,12 @@ import com.qaprosoft.carina.core.gui.AbstractUIObject;
 import com.solvd.notix.web.pages.NotebookDescriptionPage;
 import com.solvd.notix.web.pages.NotebookShoppingPage;
 import com.solvd.notix.web.pages.SalesPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -44,6 +47,8 @@ public class NavbarMenu extends AbstractUIObject {
     }
 
     public boolean isTypedProductSuggestionPresent() {
+        waitUntil(ExpectedConditions.attributeToBe(driver.findElement(By.id("searchQ")),
+                "class", "search-input ui-autocomplete-input"), EXPLICIT_TIMEOUT);
         for (ExtendedWebElement element :
                 searchSuggestions) {
             String s = element.getAttribute("data-value").toLowerCase().trim();
