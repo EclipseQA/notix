@@ -1,0 +1,81 @@
+[2023-03-01 05:26:53] [1] [WARN] Reporting disabled: using no op test run registrar
+[2023-03-01 05:26:53] [1] [INFO] TEST [notix - testGamingLaptopNavigation] STARTED at [20:26:53 2023-03-01]
+[2023-03-01 05:26:53] [1] [INFO] Starting driver session...
+[2023-03-01 05:26:58] [1] [INFO] Driver session started.
+[2023-03-01 05:26:58] [1] [INFO] INFO: opening url 'https://www.notix.by'
+[2023-03-01 05:27:01] [1] [INFO] PASS: element 'menuSquare' is clicked.
+[2023-03-01 05:27:03] [1] [INFO] PASS: element 'filterOption' is clicked.
+[2023-03-01 05:27:04] [1] [INFO] PASS: element 'panelFilterOption' is clicked.
+[2023-03-01 05:27:04] [1] [WARN] Called format method of ExtendedWebElement class with parameters, but FormatLocatorConverter already exists for element: 'filterOption', so locator will be recreated from original locator with new format parameters.
+[2023-03-01 05:27:10] [1] [ERROR] TEST [notix - testGamingLaptopNavigation] FAILED at [20:27:10 2023-03-01] - element not interactable
+  (Session info: chrome=110.0.5481.177)
+Build info: version: '4.4.0', revision: 'e5c75ed026a'
+System info: host: 'solvds-Mac-mini.local', ip: '192.168.88.116', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '12.5', java.version: '18.0.2'
+Driver info: org.openqa.selenium.remote.RemoteWebDriver
+Command: [4c586bd0bb81cc69c4a9dc9cf6bc5387, clickElement {id=e9d11fc6-213f-4ea8-9a89-1eda054db5b0}]
+Capabilities {acceptInsecureCerts: true, browserName: chrome, browserVersion: 110.0.5481.177, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /var/folders/3c/6lnjtp2d167...}, goog:chromeOptions: {debuggerAddress: localhost:53310}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: MAC, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true, webdriver.remote.sessionid: 4c586bd0bb81cc69c4a9dc9cf6b...}
+Element: [[RemoteWebDriver: chrome on MAC (4c586bd0bb81cc69c4a9dc9cf6bc5387)] -> xpath: //input[@name='Protsessor' and @value='Intel Core i7']]
+Session ID: 4c586bd0bb81cc69c4a9dc9cf6bc5387
+
+java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
+java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
+org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
+com.qaprosoft.carina.core.foundation.webdriver.listener.EventFiringSeleniumCommandExecutor.execute(EventFiringSeleniumCommandExecutor.java:57)
+org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:547)
+org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:257)
+org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:78)
+java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+java.base/java.lang.reflect.Method.invoke(Method.java:577)
+org.openqa.selenium.support.decorators.WebDriverDecorator.call(WebDriverDecorator.java:247)
+org.openqa.selenium.support.decorators.DefaultDecorated.call(DefaultDecorated.java:48)
+org.openqa.selenium.support.decorators.WebDriverDecorator.lambda$createProxy$0(WebDriverDecorator.java:309)
+net.bytebuddy.renamed.java.lang.Object$ByteBuddy$7b7DBVnJ.click(Unknown Source)
+java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+java.base/java.lang.reflect.Method.invoke(Method.java:577)
+org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:52)
+jdk.proxy2/jdk.proxy2.$Proxy52.click(Unknown Source)
+com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement$3.doClick(ExtendedWebElement.java:1544)
+com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement.executeAction(ExtendedWebElement.java:1404)
+com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement.overrideAction(ExtendedWebElement.java:1538)
+com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement.doAction(ExtendedWebElement.java:1517)
+com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement.doAction(ExtendedWebElement.java:1494)
+com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement.click(ExtendedWebElement.java:439)
+com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement.click(ExtendedWebElement.java:428)
+com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement.click(ExtendedWebElement.java:419)
+com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement$3.doCheck(ExtendedWebElement.java:1683)
+com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement.executeAction(ExtendedWebElement.java:1443)
+com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement.overrideAction(ExtendedWebElement.java:1538)
+com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement.doAction(ExtendedWebElement.java:1517)
+com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement.doAction(ExtendedWebElement.java:1494)
+com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement.check(ExtendedWebElement.java:696)
+com.solvd.notix.web.pages.NotebookShoppingPage.checkFilterOption(NotebookShoppingPage.java:37)
+com.solvd.notix.web.NotixTest.testGamingLaptopNavigation(NotixTest.java:30)
+java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+java.base/java.lang.reflect.Method.invoke(Method.java:577)
+org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:677)
+org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:221)
+org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:962)
+org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:194)
+org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+org.testng.TestRunner.privateRun(TestRunner.java:806)
+org.testng.TestRunner.run(TestRunner.java:601)
+org.testng.SuiteRunner.runTest(SuiteRunner.java:433)
+org.testng.SuiteRunner.runSequentially(SuiteRunner.java:427)
+org.testng.SuiteRunner.privateRun(SuiteRunner.java:387)
+org.testng.SuiteRunner.run(SuiteRunner.java:330)
+org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+org.testng.TestNG.runSuitesSequentially(TestNG.java:1256)
+org.testng.TestNG.runSuitesLocally(TestNG.java:1176)
+org.testng.TestNG.runSuites(TestNG.java:1099)
+org.testng.TestNG.run(TestNG.java:1067)
+com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:66)
+com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:109)

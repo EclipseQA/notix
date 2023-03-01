@@ -1,0 +1,18 @@
+[2023-03-01 06:03:04] [1] [WARN] Reporting disabled: using no op test run registrar
+[2023-03-01 06:03:04] [1] [INFO] TEST [notix - testGamingLaptopNavigation] STARTED at [21:03:04 2023-03-01]
+[2023-03-01 06:03:04] [1] [INFO] Starting driver session...
+[2023-03-01 06:03:07] [1] [INFO] Driver session started.
+[2023-03-01 06:03:07] [1] [INFO] INFO: opening url 'https://www.notix.by'
+[2023-03-01 06:03:11] [1] [INFO] PASS: element 'menuSquare' is clicked.
+[2023-03-01 06:03:12] [1] [INFO] PASS: element 'filterOption' is clicked.
+[2023-03-01 06:03:13] [1] [INFO] PASS: element 'panelFilterOption' is clicked.
+[2023-03-01 06:03:13] [1] [WARN] Called format method of ExtendedWebElement class with parameters, but FormatLocatorConverter already exists for element: 'filterOption', so locator will be recreated from original locator with new format parameters.
+[2023-03-01 06:03:18] [1] [WARN] Called format method of ExtendedWebElement class with parameters, but FormatLocatorConverter already exists for element: 'filterOption', so locator will be recreated from original locator with new format parameters.
+[2023-03-01 06:03:18] [1] [WARN] Called format method of ExtendedWebElement class with parameters, but FormatLocatorConverter already exists for element: 'panelFilterOption', so locator will be recreated from original locator with new format parameters.
+[2023-03-01 06:03:19] [1] [INFO] PASS: element 'panelFilterOption' is clicked.
+[2023-03-01 06:03:19] [1] [WARN] Called format method of ExtendedWebElement class with parameters, but FormatLocatorConverter already exists for element: 'filterOption', so locator will be recreated from original locator with new format parameters.
+[2023-03-01 06:03:19] [1] [INFO] PASS: element 'filterOption' is clicked.
+[2023-03-01 06:03:21] [1] [INFO] PASS: element 'listImageProducts1' is clicked.
+[2023-03-01 06:03:21] [1] [WARN] Called format method of ExtendedWebElement class with parameters, but FormatLocatorConverter already exists for element: 'detailProductField', so locator will be recreated from original locator with new format parameters.
+[2023-03-01 06:03:21] [1] [WARN] Called format method of ExtendedWebElement class with parameters, but FormatLocatorConverter already exists for element: 'detailProductField', so locator will be recreated from original locator with new format parameters.
+[2023-03-01 06:03:22] [1] [INFO] TEST [notix - testGamingLaptopNavigation] PASSED at [21:03:22 2023-03-01]
