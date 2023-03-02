@@ -5,7 +5,9 @@ import com.ibm.icu.util.ULocale;
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.solvd.notix.web.components.FooterMenu;
 import com.solvd.notix.web.components.NavbarMenu;
+import com.solvd.notix.web.components.OrderFormModel;
 import com.solvd.notix.web.dto.NotebookModel;
+import com.solvd.notix.web.dto.getdto.GetCustomerModel;
 import com.solvd.notix.web.dto.getdto.GetNotebookModel;
 import com.solvd.notix.web.pages.MainPage;
 import com.solvd.notix.web.pages.NotebookDescriptionPage;
@@ -22,25 +24,48 @@ import java.util.Random;
 public class NotixTest implements IAbstractTest {
 
     @Test
+    public void testMakeAnOrder() {
+        MainPage mainPage = new MainPage(getDriver());
+        mainPage.open();
+
+        FooterMenu footerMenu = mainPage.switchToFooterMenu();
+        NotebookShoppingPage notebookShoppingPage = footerMenu.goToNotebookPage();
+        notebookShoppingPage.clickOnBuyButton(1);
+
+        NavbarMenu navbarMenu = notebookShoppingPage.switchToNavbarMenu();
+        navbarMenu.hoverOnCart();
+
+        OrderFormModel orderFormModel = navbarMenu.clickBuyButton();
+        orderFormModel.fillCustomerInformationInputsByCustomerModel(GetCustomerModel.getCustomerModelWithAllFields());
+        orderFormModel.clickOrderButton();
+        Assert.assertTrue(orderFormModel.isCheckoutBodyPresent());
+    }
+
+    @Test
     public void testFilterPanelOptions() {
         MainPage mainPage = new MainPage(getDriver());
         mainPage.open();
         NotebookShoppingPage gamingNotebookShoppingPage = mainPage.goToGamingNotebookShoppingPage();
-        gamingNotebookShoppingPage.checkFilterOption(NotebookShoppingPage.FilterOption.BRAND, R.TESTDATA.get("brand"));
+
+        String expectedBrand = R.TESTDATA.get("brand");
+        String expectedCpu = R.TESTDATA.get("cpu");
+        String expectedResolution = R.TESTDATA.get("resolution");
+        gamingNotebookShoppingPage.checkFilterOption(NotebookShoppingPage.FilterOption.BRAND, expectedBrand);
         gamingNotebookShoppingPage.openPanelFilterOption(NotebookShoppingPage.FilterPanel.CPU);
-        gamingNotebookShoppingPage.checkFilterOption(NotebookShoppingPage.FilterOption.CPU, R.TESTDATA.get("cpu"));
+        gamingNotebookShoppingPage.checkFilterOption(NotebookShoppingPage.FilterOption.CPU, expectedCpu);
         gamingNotebookShoppingPage.openPanelFilterOption(NotebookShoppingPage.FilterPanel.RESOLUTION);
-        gamingNotebookShoppingPage.checkFilterOption(NotebookShoppingPage.FilterOption.RESOLUTION, R.TESTDATA.get("resolution"));
+        gamingNotebookShoppingPage.checkFilterOption(NotebookShoppingPage.FilterOption.RESOLUTION, expectedResolution);
 
 
         NotebookDescriptionPage descriptionPage = gamingNotebookShoppingPage.clickOnProductById(1);
+        String actualBrand = descriptionPage.getDescriptionItem(NotebookDescriptionPage.DescriptionCommonField.PRODUCT_LINE);
+        String actualCpu = descriptionPage.getDescriptionItem(NotebookDescriptionPage.DescriptionCommonField.CPU_MODEL);
+        String actualResolution = descriptionPage.getDescriptionItem(NotebookDescriptionPage.DescriptionCommonField.RESOLUTION);
+
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertTrue(descriptionPage.getDescriptionItem(NotebookDescriptionPage.DescriptionCommonField.CPU_MODEL)
-                .contains(R.TESTDATA.get("cpu")));
-        softAssert.assertTrue(descriptionPage.getDescriptionItem(NotebookDescriptionPage.DescriptionCommonField.RESOLUTION)
-                .contains(R.TESTDATA.get("resolution")));
-        softAssert.assertTrue(descriptionPage.getDescriptionItem(NotebookDescriptionPage.DescriptionCommonField.PRODUCT_LINE)
-                .contains(R.TESTDATA.get("brand").toUpperCase()));
+        softAssert.assertTrue(actualBrand.toLowerCase().contains(expectedBrand.toLowerCase()));
+        softAssert.assertTrue(actualCpu.toLowerCase().contains(expectedCpu.toLowerCase()));
+        softAssert.assertTrue(actualResolution.toLowerCase().contains(expectedResolution.toLowerCase()));
         softAssert.assertAll();
     }
 

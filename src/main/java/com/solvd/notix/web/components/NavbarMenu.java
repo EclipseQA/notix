@@ -6,6 +6,7 @@ import com.solvd.notix.web.pages.NotebookDescriptionPage;
 import com.solvd.notix.web.pages.NotebookShoppingPage;
 import com.solvd.notix.web.pages.SalesPage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -37,7 +38,22 @@ public class NavbarMenu extends AbstractUIObject {
     @FindBy(xpath = "//a[@id='cart-link']/following-sibling::div//a[@class='linkP']")
     private List<ExtendedWebElement> productsInCart;
 
+    @FindBy(xpath = "//a[contains(@class,'js-cart-checkout')]")
+    private ExtendedWebElement buyButton;
+
+    private OrderFormModel orderFormModel;
+
     private String typedProduct;
+
+    public OrderFormModel clickBuyButton() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", buyButton.getElement());
+        return new OrderFormModel(driver);
+    }
+
+    public void hoverOnCart() {
+        cartSection.hover();
+    }
 
     public NotebookDescriptionPage goToLastAddedProductDescriptionPageInCart() {
         cartSection.hover();

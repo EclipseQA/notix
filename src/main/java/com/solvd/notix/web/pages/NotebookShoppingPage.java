@@ -1,15 +1,15 @@
 package com.solvd.notix.web.pages;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.qaprosoft.carina.core.foundation.webdriver.listener.EventFiringSeleniumCommandExecutor;
 import com.qaprosoft.carina.core.gui.AbstractPage;
 import com.solvd.notix.web.components.NavbarMenu;
-import org.openqa.selenium.ElementNotInteractableException;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.WebDriver;
+import com.zebrunner.carina.utils.R;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.WheelInput;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import java.util.List;
 
@@ -26,28 +26,34 @@ public class NotebookShoppingPage extends AbstractPage {
 
     @FindBy(xpath = "//a[contains(text(), '%s')]")
     private ExtendedWebElement panelFilterOption;
-
-    @FindBy(xpath = "((//a[contains(text(), 'Процессор')]/ancestor::div[contains(@class,'panel')])[1]//div[contains(@class,'scroll')])[1]")
-    private ExtendedWebElement test;
+    @FindBy(xpath = "//a[contains(text(), 'Процессор')]/ancestor::div[@class='panel-heading']/following-sibling::div//div[contains(@class,'panel-body')]//div[@class='mCSB_dragger_bar']")
+    private ExtendedWebElement scrollBar;
 
     private Point startPoint;
 
     public void openPanelFilterOption(FilterPanel panel) {
+        panelFilterOption.format(panel.getXpathId()).scrollTo();
         panelFilterOption.format(panel.getXpathId()).click();
     }
 
     public void checkFilterOption(FilterOption option, String value) {
-        try {
-            filterOption.format(option.getXpathId(), value).click();
-        } catch (ElementNotInteractableException e) {
-            startPoint = filterOption.format(option.getXpathId(), value).getLocation();
-            scrollWheelDown();
+        int retryCount = Integer.parseInt(R.TESTDATA.get("retry_scroll_count"));
+        while (retryCount != 0) {
+            try {
+                filterOption.format(option.getXpathId(), value).check();
+                if (filterOption.format(option.getXpathId(), value).isChecked()) {
+                    return;
+                }
+            } catch (ElementNotInteractableException e) {
+                retryCount--;
+                scrollTheBar();
+            }
         }
     }
 
-    public void scrollWheelDown() {
-        WheelInput.ScrollOrigin scrollOrigin = WheelInput.ScrollOrigin.fromViewport(startPoint.getX(), startPoint.getY());
-        new Actions(driver).scrollFromOrigin(scrollOrigin, 0, 10);
+    public void scrollTheBar() {
+        Actions actions = new Actions(driver);
+        actions.clickAndHold(scrollBar.format().getElement()).moveByOffset(0, 10).perform();
     }
 
     public void clickOnBuyButton(int timesToClick) {
