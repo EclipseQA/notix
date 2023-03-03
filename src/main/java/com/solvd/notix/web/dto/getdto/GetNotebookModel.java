@@ -9,7 +9,7 @@ public class GetNotebookModel {
 
     public static NotebookModel getNotebookModel(NotebookDescriptionPage page) {
         return NotebookModel.builder().
-                productLine(page.getDescriptionItem(DescriptionCommonField.PRODUCT_LINE)).
+                brandName(page.getBrandName()).
                 year(page.getDescriptionItem(DescriptionCommonField.YEAR)).
                 cpu(page.getDescriptionItem(DescriptionCommonField.CPU_MODEL)).
                 ram(page.getDescriptionItem(DescriptionCommonField.RAM)).

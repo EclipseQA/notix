@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode
 public class NotebookModel {
 
-    private String productLine;
+    private String brandName;
     private String cpu;
     private String ram;
     private String resolution;

@@ -34,7 +34,6 @@ public class NotebookDescriptionPage extends AbstractPage {
     }
 
     public enum DescriptionCommonField {
-        PRODUCT_LINE("Продуктовая линейка"),
         CPU_MODEL("Модель процессора"),
         YEAR("Дата выхода"),
         RESOLUTION("Разрешение экрана"),
