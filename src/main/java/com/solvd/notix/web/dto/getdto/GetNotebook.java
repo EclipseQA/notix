@@ -1,14 +1,14 @@
 package com.solvd.notix.web.dto.getdto;
 
-import com.solvd.notix.web.dto.NotebookModel;
+import com.solvd.notix.web.dto.Notebook;
 import com.solvd.notix.web.pages.NotebookDescriptionPage;
 
 import static com.solvd.notix.web.pages.NotebookDescriptionPage.DescriptionCommonField;
 
-public class GetNotebookModel {
+public class GetNotebook {
 
-    public static NotebookModel getNotebookModel(NotebookDescriptionPage page) {
-        return NotebookModel.builder().
+    public static Notebook getNotebookByPage(NotebookDescriptionPage page) {
+        return Notebook.builder().
                 brandName(page.getBrandName()).
                 year(page.getDescriptionItem(DescriptionCommonField.YEAR)).
                 cpu(page.getDescriptionItem(DescriptionCommonField.CPU_MODEL)).

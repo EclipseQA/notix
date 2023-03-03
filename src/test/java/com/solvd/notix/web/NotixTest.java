@@ -6,9 +6,9 @@ import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.solvd.notix.web.components.FooterMenu;
 import com.solvd.notix.web.components.NavbarMenu;
 import com.solvd.notix.web.components.OrderFormModel;
-import com.solvd.notix.web.dto.NotebookModel;
-import com.solvd.notix.web.dto.getdto.GetCustomerModel;
-import com.solvd.notix.web.dto.getdto.GetNotebookModel;
+import com.solvd.notix.web.dto.Notebook;
+import com.solvd.notix.web.dto.getdto.GetCustomer;
+import com.solvd.notix.web.dto.getdto.GetNotebook;
 import com.solvd.notix.web.pages.MainPage;
 import com.solvd.notix.web.pages.NotebookDescriptionPage;
 import com.solvd.notix.web.pages.NotebookShoppingPage;
@@ -36,7 +36,7 @@ public class NotixTest implements IAbstractTest {
         navbarMenu.hoverOnCart();
 
         OrderFormModel orderFormModel = navbarMenu.clickBuyButton();
-        orderFormModel.fillCustomerInformationInputsByCustomerModel(GetCustomerModel.getCustomerModelWithAllFields());
+        orderFormModel.fillCustomerInformationInputsByCustomerModel(GetCustomer.getCustomerWithAllFields());
         orderFormModel.clickOrderButton();
         Assert.assertTrue(orderFormModel.isCheckoutBodyPresent());
     }
@@ -79,15 +79,15 @@ public class NotixTest implements IAbstractTest {
 
         int timesToClick = new Random().nextInt(notebookShoppingPage.getNumberOfProductsOnPage()) + 1;
         NotebookDescriptionPage notebookDescriptionPage = notebookShoppingPage.clickOnProductById(timesToClick);
-        NotebookModel notebookModelOnShoppingPage = GetNotebookModel.getNotebookModel(notebookDescriptionPage);
+        Notebook notebookOnShoppingPage = GetNotebook.getNotebookByPage(notebookDescriptionPage);
         notebookDescriptionPage.clickBuyButton();
 
         NavbarMenu navbarMenu = notebookDescriptionPage.switchToNavbarMenu();
 
         NotebookDescriptionPage notebookDescriptionPage2 = navbarMenu.goToLastAddedProductDescriptionPageInCart();
-        NotebookModel notebookModelInCart = GetNotebookModel.getNotebookModel(notebookDescriptionPage2);
+        Notebook notebookInCart = GetNotebook.getNotebookByPage(notebookDescriptionPage2);
 
-        Assert.assertEquals(notebookModelOnShoppingPage, notebookModelInCart);
+        Assert.assertEquals(notebookOnShoppingPage, notebookInCart);
     }
 
     @Test

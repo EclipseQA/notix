@@ -17,6 +17,9 @@ public class NotebookDescriptionPage extends AbstractPage {
     @FindBy(xpath = "//span[@itemprop='brand']")
     private ExtendedWebElement brandNameField;
 
+    @FindBy()
+    private NavbarMenu navbarMenu;
+
     public NavbarMenu switchToNavbarMenu() {
         return new NavbarMenu(driver);
     }

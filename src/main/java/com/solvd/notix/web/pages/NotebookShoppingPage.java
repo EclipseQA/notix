@@ -17,23 +17,21 @@ public class NotebookShoppingPage extends AbstractPage {
 
     @FindBy(xpath = "(//span[@class='add2cart'])[%d]")
     private ExtendedWebElement buyButton;
-
     @FindBy(xpath = "//span[@id='productsList']//div[contains(@class,'product')]//div[@class='image']")
     private List<ExtendedWebElement> listImageProducts;
-
     @FindBy(xpath = "//input[@name='%s' and @value='%s']")
     private ExtendedWebElement filterOption;
-
     @FindBy(xpath = "//a[contains(text(), '%s')]")
     private ExtendedWebElement panelFilterOption;
-    @FindBy(xpath = "//a[contains(text(), 'Процессор')]/ancestor::div[@class='panel-heading']/following-sibling::div//div[contains(@class,'panel-body')]//div[@class='mCSB_dragger_bar']")
+    @FindBy(xpath = "//a[contains(text(), '%s')]/ancestor::div[@class='panel-heading']/following-sibling::div//div[contains(@class,'panel-body')]//div[@class='mCSB_dragger_bar']")
     private ExtendedWebElement scrollBar;
-
-    private Point startPoint;
-
+    @FindBy(xpath = "//div[contains(@class,'navbar-tshop')]")
+    private NavbarMenu navbarMenu;
+    private FilterPanel panel;
     public void openPanelFilterOption(FilterPanel panel) {
         panelFilterOption.format(panel.getXpathId()).scrollTo();
         panelFilterOption.format(panel.getXpathId()).click();
+        this.panel = panel;
     }
 
     public int getNumberOfProductsOnPage() {
@@ -57,7 +55,7 @@ public class NotebookShoppingPage extends AbstractPage {
 
     public void scrollTheBar() {
         Actions actions = new Actions(driver);
-        actions.clickAndHold(scrollBar.format().getElement()).moveByOffset(0, 10).perform();
+        actions.clickAndHold(scrollBar.format(panel.getXpathId()).getElement()).moveByOffset(0, 10).perform();
     }
 
     public void clickOnBuyButton(int timesToClick) {
@@ -78,7 +76,7 @@ public class NotebookShoppingPage extends AbstractPage {
     }
 
     public NavbarMenu switchToNavbarMenu() {
-        return new NavbarMenu(driver);
+        return navbarMenu;
     }
 
     public enum FilterPanel {

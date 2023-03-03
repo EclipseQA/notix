@@ -41,6 +41,7 @@ public class NavbarMenu extends AbstractUIObject {
     @FindBy(xpath = "//a[contains(@class,'js-cart-checkout')]")
     private ExtendedWebElement buyButton;
 
+    @FindBy(xpath = "//div[contains(@class,'modal-bg-1')]")
     private OrderFormModel orderFormModel;
 
     private String typedProduct;
@@ -48,7 +49,7 @@ public class NavbarMenu extends AbstractUIObject {
     public OrderFormModel clickBuyButton() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", buyButton.getElement());
-        return new OrderFormModel(driver);
+        return orderFormModel;
     }
 
     public void hoverOnCart() {

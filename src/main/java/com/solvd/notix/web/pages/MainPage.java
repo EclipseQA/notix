@@ -12,13 +12,16 @@ public class MainPage extends AbstractPage {
     @FindBy(xpath = "//div[@class='menu-square']//div[text()='%s']")
     private ExtendedWebElement menuSquare;
 
+    @FindBy(className = "footer-bottom")
+    private FooterMenu footerMenu;
+
     public NotebookShoppingPage goToGamingNotebookShoppingPage() {
         menuSquare.format(MenuSquareOption.GAMING.getXpathId()).click();
         return new NotebookShoppingPage(driver);
     }
 
     public FooterMenu switchToFooterMenu() {
-        return new FooterMenu(driver);
+        return footerMenu;
     }
 
     public NavbarMenu switchToNavBarMenu() {

@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 
 @Builder
 @EqualsAndHashCode
-public class NotebookModel {
+public class Notebook {
 
     private String brandName;
     private String cpu;

@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Builder
 @Data
-public class CustomerModel {
+public class Customer {
 
     private String name;
     private String address;
