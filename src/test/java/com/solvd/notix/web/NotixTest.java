@@ -56,9 +56,9 @@ public class NotixTest implements IAbstractTest {
         gamingNotebookShoppingPage.openPanelFilterOption(NotebookShoppingPage.FilterPanel.RESOLUTION);
         gamingNotebookShoppingPage.checkFilterOption(NotebookShoppingPage.FilterOption.RESOLUTION, expectedResolution);
 
-
-        NotebookDescriptionPage descriptionPage = gamingNotebookShoppingPage.clickOnProductById(1);
-        String actualBrand = descriptionPage.getDescriptionItem(NotebookDescriptionPage.DescriptionCommonField.PRODUCT_LINE);
+        int timesToClick = new Random().nextInt(gamingNotebookShoppingPage.getNumberOfProductsOnPage()) + 1;
+        NotebookDescriptionPage descriptionPage = gamingNotebookShoppingPage.clickOnProductById(timesToClick);
+        String actualBrand = descriptionPage.getBrandName();
         String actualCpu = descriptionPage.getDescriptionItem(NotebookDescriptionPage.DescriptionCommonField.CPU_MODEL);
         String actualResolution = descriptionPage.getDescriptionItem(NotebookDescriptionPage.DescriptionCommonField.RESOLUTION);
 
@@ -77,8 +77,8 @@ public class NotixTest implements IAbstractTest {
         FooterMenu footerMenu = mainPage.switchToFooterMenu();
         NotebookShoppingPage notebookShoppingPage = footerMenu.goToNotebookPage();
 
-        int i = new Random().nextInt(20) + 1;
-        NotebookDescriptionPage notebookDescriptionPage = notebookShoppingPage.clickOnProductById(i);
+        int timesToClick = new Random().nextInt(notebookShoppingPage.getNumberOfProductsOnPage()) + 1;
+        NotebookDescriptionPage notebookDescriptionPage = notebookShoppingPage.clickOnProductById(timesToClick);
         NotebookModel notebookModelOnShoppingPage = GetNotebookModel.getNotebookModel(notebookDescriptionPage);
         notebookDescriptionPage.clickBuyButton();
 
@@ -125,15 +125,15 @@ public class NotixTest implements IAbstractTest {
         NavbarMenu navbarMenu = mainPage.switchToNavBarMenu();
 
         NotebookShoppingPage notebookShoppingPage = navbarMenu.goToNotebookPage();
-        int numberToAddProducts = new Random().nextInt(20) + 1;
-        notebookShoppingPage.clickOnBuyButton(numberToAddProducts);
+        int timesToClick = new Random().nextInt(notebookShoppingPage.getNumberOfProductsOnPage()) + 1;
+        notebookShoppingPage.clickOnBuyButton(timesToClick);
 
         NavbarMenu navbarMenu1 = notebookShoppingPage.switchToNavbarMenu();
 
         ULocale locale = new ULocale("ru_RU");
         MessageFormat formatter =
                 new MessageFormat("{0, plural, one {# ТОВАР} few {# ТОВАРА} many {# ТОВАРОВ} other {# ТОВАР}}", locale);
-        String expectedResult = formatter.format(new Object[]{numberToAddProducts});
+        String expectedResult = formatter.format(new Object[]{timesToClick});
         String actualResult = navbarMenu1.getNumberOfProductsInCart();
 
         Assert.assertEquals(actualResult, expectedResult);

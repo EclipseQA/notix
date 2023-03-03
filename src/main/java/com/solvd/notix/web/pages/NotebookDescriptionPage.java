@@ -8,12 +8,14 @@ import org.openqa.selenium.support.FindBy;
 
 public class NotebookDescriptionPage extends AbstractPage {
 
-    @FindBy(xpath = "//tr[@class='product-item']/td[contains(text(),'%s')]/following-sibling::td")
-    private ExtendedWebElement detailProductField;
+    @FindBy(xpath = "//div[@id='details']//td[contains(text(),'%s')]/following-sibling::td")
+    private ExtendedWebElement productInformationField;
 
     @FindBy(xpath = "//div[@class='addto']//button")
     private ExtendedWebElement buyButton;
 
+    @FindBy(xpath = "//span[@itemprop='brand']")
+    private ExtendedWebElement brandNameField;
 
     public NavbarMenu switchToNavbarMenu() {
         return new NavbarMenu(driver);
@@ -23,8 +25,12 @@ public class NotebookDescriptionPage extends AbstractPage {
         buyButton.click();
     }
 
+    public String getBrandName() {
+        return brandNameField.getText();
+    }
+
     public String getDescriptionItem(DescriptionCommonField field) {
-        return detailProductField.format(field.getXpathId()).getText();
+        return productInformationField.format(field.getXpathId()).getText();
     }
 
     public enum DescriptionCommonField {

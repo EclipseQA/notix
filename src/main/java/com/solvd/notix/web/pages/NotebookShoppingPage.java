@@ -36,6 +36,10 @@ public class NotebookShoppingPage extends AbstractPage {
         panelFilterOption.format(panel.getXpathId()).click();
     }
 
+    public int getNumberOfProductsOnPage() {
+        return listImageProducts.size();
+    }
+
     public void checkFilterOption(FilterOption option, String value) {
         int retryCount = Integer.parseInt(R.TESTDATA.get("retry_scroll_count"));
         while (retryCount != 0) {

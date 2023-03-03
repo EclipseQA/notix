@@ -19,6 +19,6 @@ public class DataFaker {
     }
 
     public static String getPhoneNumber() {
-        return faker.numerify("########");
+        return faker.numerify("#########");
     }
 }

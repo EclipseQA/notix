@@ -3,6 +3,7 @@ package com.solvd.notix.web.components;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
 import com.solvd.notix.web.dto.CustomerModel;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -39,10 +40,10 @@ public class OrderFormModel extends AbstractUIObject {
         fillNameInput(customer.getName());
         fillAddressInput(customer.getAddress());
         fillPhoneNumberInput(customer.getPhoneNumber());
+        System.out.println(customer.getPhoneNumber());
     }
 
     public void fillPhoneNumberInput(String value) {
-        phoneInput.click();
         phoneInput.type(value);
     }
 
